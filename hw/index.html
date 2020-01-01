@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Meme</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js'></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+            let res = {}
+            let baseurl = "https://api.imgflip.com/get_memes"
+                axios.get(baseurl).then(function(result){
+                    res = result.data
+                    //  document.getElementById("outputpic").innerHTML = ""
+                    // document.getElementById("outputpic").innerHTML += 
+                    res.data.memes.forEach(element => {
+                        document.getElementById("outputname").innerHTML += 
+                        `<p onclick="myfunc()"> Meme :${element.name}</p>
+                       <div><img src=${element.url} height=${element.height} width=${element.width} id="outputpic" /></div>`
+                    })
+                })
+                // function func() {
+                // let visibleImg;
+                // let x = document.getElementById("outputpic");
+                // for (let i = 0; i < x.length; i++) {
+                //     let id = x[i].id;
+                //     let index = x[i].id.indexOf("outputpic");
+                //     if (x[i].style.display === "block" && x[i].id.indexOf("outputpic") > -1) {
+                //         visibleImg = x[i];
+                //     }
+                // }
+                function myfunc() {
+                let x = document.getElementById("outputpic");
+                if (x.style.display === "none") {
+                     x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+                }
+            </script>
+</head>
+<body>
+    <div id="outputname"></div>
+    <div id="outputpic"></div>
+ </div>   
+</body>
+</html>
+<ul>
+        <!-- <p> List of films </p> 
+     //    ${element.films.map((e) =>` <li><a href="${e}">${e}</a></li> `).join("")}
+        </ul> -->
